@@ -76,6 +76,10 @@ single-used-m	:= $(addprefix $(obj)/,$(single-used-m))
 multi-used-m	:= $(addprefix $(obj)/,$(multi-used-m))
 subdir-ym	:= $(addprefix $(obj)/,$(subdir-ym))
 
+ifeq ($(CFG_TZRAM_SIZE),64)
+dtc_cpp_flags += -DHIKEY_TZRAM_64MB
+endif
+
 # Finds the multi-part object the current object will be linked into.
 # If the object belongs to two or more multi-part objects, all of them are
 # concatenated with a colon separator.
